@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      Welcome to Amazon A-Z Shopping
+      <h1>Welcome to Amazon A-Z Shopping</h1>
     </div>
   );
 }
