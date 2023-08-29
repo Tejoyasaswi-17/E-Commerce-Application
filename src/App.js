@@ -1,7 +1,11 @@
+import Header from "./Header";
+import Home from "./Home";
+
 function App() {
   return (
     <div>
-      <h1>Welcome to Amazon A-Z Shopping</h1>
+      <Header />
+      <Home />
     </div>
   );
 }
