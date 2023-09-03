@@ -1,6 +1,23 @@
 import React from "react";
 import styles from "./styles.module.css";
-function Product({ title = "", image = "", price = "", rating = "" }) {
+import { useStateValue } from "../../context";
+
+function Product({ id = "", title = "", image = "", price = "", rating = "" }) {
+  const [ {basket}, dispatch] = useStateValue();
+  console.log('basket', basket);
+  const addToCart = () => {
+    // Dispatch the item into data layer
+    dispatch({
+      type: "ADD_TO_CART",
+      item: {
+        id: id,
+        title: title,
+        image: image,
+        price: price,
+        rating: rating,
+      },
+    });
+  };
   return (
     <div className={styles.product}>
       <div className={styles.product_info}>
@@ -18,7 +35,7 @@ function Product({ title = "", image = "", price = "", rating = "" }) {
         </div>
       </div>
       <img src={image} alt="2 states book" />
-      <button>Add to Cart</button>
+      <button onClick={addToCart}>Add to Cart</button>
     </div>
   );
 }
