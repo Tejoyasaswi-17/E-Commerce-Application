@@ -1,3 +1,4 @@
+import Checkout from "./Checkout";
 import Header from "./Header";
 import Home from "./Home";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -6,13 +7,13 @@ function App() {
   return (
     <Router>
       <div>
+        <Header />
         <Routes>
           <Route
             path="/checkout"
             element={
               <>
-                <Header />
-                <Home />
+                <Checkout />
               </>
             }
           />
@@ -20,7 +21,6 @@ function App() {
             path="/"
             element={
               <>
-                <Header />
                 <Home />
               </>
             }
