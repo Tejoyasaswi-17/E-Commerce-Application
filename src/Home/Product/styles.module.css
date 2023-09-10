@@ -38,3 +38,7 @@
 .product_info {
   height: 100px;
 }
+
+.add_to_cart:hover {
+  cursor: pointer;
+}
