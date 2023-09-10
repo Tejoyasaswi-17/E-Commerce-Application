@@ -3,8 +3,7 @@ import styles from "./styles.module.css";
 import { useStateValue } from "../../context";
 
 function Product({ id = "", title = "", image = "", price = "", rating = "" }) {
-  const [ {basket}, dispatch] = useStateValue();
-  console.log('basket', basket);
+  const [{ basket }, dispatch] = useStateValue();
   const addToCart = () => {
     // Dispatch the item into data layer
     dispatch({
@@ -30,12 +29,14 @@ function Product({ id = "", title = "", image = "", price = "", rating = "" }) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <p>*</p>
+              <p>⭐️</p>
             ))}
         </div>
       </div>
       <img src={image} alt="2 states book" />
-      <button onClick={addToCart}>Add to Cart</button>
+      <button className={styles.add_to_cart} onClick={addToCart}>
+        Add to Cart
+      </button>
     </div>
   );
 }
