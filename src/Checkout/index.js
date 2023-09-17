@@ -5,7 +5,7 @@ import { useStateValue } from "../context";
 import CheckoutProductList from "./CheckoutProductList";
 
 function Checkout() {
-  const [{ basket }] = useStateValue();
+  const [{ basket, user }] = useStateValue();
   return (
     <div className={styles.checkout}>
       <div className={styles.checkout_left}>
@@ -15,6 +15,7 @@ function Checkout() {
           alt="Advertisement"
         />
         <div>
+          <h3>Hey, {user?.email?.split("@")[0]}</h3>
           <h2 className={styles.checkout_title}>Your Shopping Cart</h2>
 
           {basket.map((item) => (
