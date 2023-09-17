@@ -4,11 +4,18 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import SearchIcon from "@mui/icons-material/Search";
 import FlagIcon from "@mui/icons-material/Flag";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { useStateValue } from './../context/index'
+import { useStateValue } from "./../context/index";
 import { Link } from "react-router-dom";
+import { auth } from "../firebase";
 
 function Header() {
-  const [ {basket}, dispatch] = useStateValue();
+  const [{ basket, user }] = useStateValue();
+
+  const authenticationHandler = () => {
+    if (user) {
+      auth.signOut();
+    }
+  };
 
   return (
     <div className={styles.header}>
@@ -31,10 +38,14 @@ function Header() {
           <FlagIcon />
           <div className={styles.header_language}>EN</div>
         </div>
-        <div className={styles.header_option}>
-          <span className={styles.header_option_line1}>Hello Tejo</span>
-          <span className={styles.header_option_line2}>Sign In</span>
-        </div>
+        <Link to={!user && "/login"}>
+          <div onClick={authenticationHandler} className={styles.header_option}>
+            <span className={styles.header_option_line1}>Hello Tejo</span>
+            <span className={styles.header_option_line2}>
+              {user ? "Sign Out" : "Sign In"}
+            </span>
+          </div>
+        </Link>
         <div className={styles.header_option}>
           <span className={styles.header_option_line1}>Returns</span>
           <span className={styles.header_option_line2}>& Orders</span>
